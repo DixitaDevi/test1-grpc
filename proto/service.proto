@@ -1,0 +1,88 @@
+syntax = "proto3";
+
+package proto;
+
+
+message Person{
+    string id = 1;
+    string name = 2;
+}
+
+message CreatePersonRequest{
+    Person person = 1;
+}
+
+message CreatePersonResponse{
+    Person person = 1; //with id
+}
+message ReadPersonRequest{
+    string person_id = 1;
+}
+message ReadPersonResponse{
+    Person person = 1;
+}
+message UpdatePersonRequest{
+    Person person = 1;
+}
+message UpdatePersonResponse{
+    Person person = 1;
+}
+message DeletePersonRequest{
+    string person_id = 1;
+}
+message DeletePersonResponse{
+    string person_id = 1;
+}
+
+
+message LoginRequest{
+    string Login = 1;
+    string Password = 2;
+}
+
+message AuthResponse{
+    string Token = 1;
+}
+
+message SignupRequest{
+    string Username = 1;
+    string Email = 2;
+    string Password = 3;
+}
+
+message UsernameUsedRequest{
+    string Username = 1;
+}
+message EmailUsedRequest{
+    string Email = 1;
+}
+message UsedResponse{
+    bool Used = 1;
+}
+message AuthUserRequest{
+    string Token = 1;
+}
+message AuthUserResponse{
+    string ID = 1;
+    string Username = 2;
+    string Email = 3;
+}
+service StetService{
+    rpc CreatePerson (CreatePersonRequest) returns (CreatePersonResponse);
+    rpc ReadPerson(ReadPersonRequest) returns (ReadPersonResponse); //returns NOT_FOUND if not found
+    rpc UpdatePerson(UpdatePersonRequest) returns (UpdatePersonResponse); //returns NOT_FOUND if not found
+    rpc DeletePerson(DeletePersonRequest) returns (DeletePersonResponse); //returns NOT_FOUND if not found
+    rpc Login (LoginRequest) returns (AuthResponse);
+    rpc  Signup(SignupRequest) returns (AuthResponse);
+    rpc UsernameUsed(UsernameUsedRequest) returns (UsedResponse);
+    rpc EmailUsed(EmailUsedRequest) returns (UsedResponse);
+    rpc AuthUser(AuthUserRequest) returns (AuthUserResponse);
+}
+
+/*service AuthService{
+    rpc Login (LoginRequest) returns (AuthResponse);
+    rpc  Signup(SignupRequest) returns (AuthResponse);
+    rpc UsernameUsed(UsernameUsedRequest) returns (UsedResponse);
+    rpc EmailUsed(EmailUsedRequest) returns (UsedResponse);
+    rpc AuthUser(AuthUserRequest) returns (AuthUserResponse);
+}*/
