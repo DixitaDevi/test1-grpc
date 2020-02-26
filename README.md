@@ -20,6 +20,7 @@ $ go get -u github.com/golang/protobuf/protoc-gen-go
 gRPC-Go: (https://github.com/grpc/grpc-go)
 $ go get -u google.golang.org/grpc
 
+protoc-gen-grpc-web: (https://github.com/grpc/grpc-web/releases)
 
 CLI:  (https://github.com/ktr0731/evans) -> Follow this link for the docs.
 $ go get github.com/ktr0731/evans
